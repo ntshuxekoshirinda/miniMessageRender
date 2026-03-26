@@ -1,3 +1,4 @@
+import express from 'express';
 import express, { Request, Response} from 'express';
 import path from 'path';
 import type { Message, NewMessageBody } from './types.ts';
@@ -6,6 +7,7 @@ const app = express();
 const __dirname = path.resolve();
 const PORT = 3000;
 
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'src/public')));
 
