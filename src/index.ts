@@ -1,5 +1,5 @@
 import express from 'express';
-import express, { Request, Response} from 'express';
+import type { Request, Response} from 'express';
 import path from 'path';
 import type { Message, NewMessageBody } from './types.ts';
 
@@ -53,7 +53,7 @@ app.post("/", (req: express.Request<{}, {}, NewMessageBody>, res: express.Respon
 });
 
 app.get("/message/:id", (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id as string);
     const message = messages[id];
     if (message) {
         res.render("message", { title: "Message Details", message: message });
