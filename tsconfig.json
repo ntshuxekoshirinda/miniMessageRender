@@ -4,15 +4,11 @@
     // File Layout
      "rootDir": "./src",
      "outDir": "./dist",
-     "esModuleInterop": true,
      "allowJs": true,
     "noEmit": true,
-
-     
-
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
     "target": "esnext",
     "types": [],
     // For nodejs:
