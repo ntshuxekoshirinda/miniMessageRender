@@ -13,7 +13,7 @@ jobs:
     name: "Terraform Validation & Plan"
     runs-on: ubuntu-latest
 
-    # Use the Azure login or environment variables for authentication
+    # Maps GitHub Secrets to Terraform Azure Environment Variables
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
@@ -21,24 +21,19 @@ jobs:
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
     steps:
-      # 1. Checkout the repository code
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Setup Terraform CLI
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.6.6"
 
-      # 3. Initialize Terraform
       - name: Terraform Init
         run: terraform init
 
-      # 4. Validate Terraform configuration syntax
       - name: Terraform Validate
         run: terraform validate
 
-      # 5. Generate Terraform Execution Plan
       - name: Terraform Plan
         run: terraform plan -input=false
